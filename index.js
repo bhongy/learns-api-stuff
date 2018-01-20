@@ -1,11 +1,21 @@
 require('dotenv').config();
 const express = require('express');
+const uuid = require('uuid/v1');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+function requestIdMiddleware(req, res, next) {
+  // use ``res.locals`` to store temporary user data
+  // that’s only available during that user’s request/response cycle
+  res.locals.id = uuid();
+  next();
+}
+
+app.use(requestIdMiddleware);
+
 app.get('*', (_, res) => {
-  res.send('Hello World!');
+  res.send(res.locals.id);
 });
 
 app.listen(port, () => {
