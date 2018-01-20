@@ -13,4 +13,3 @@
   > You must shut down the process when there is an uncaught exception, because by definition, if you don’t know what went wrong with the app, your app is in an unknown, undefined state, and just about anything could be going wrong.
 
 ---
-
