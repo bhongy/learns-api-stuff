@@ -1,4 +1,5 @@
 require('dotenv').config();
+const fs = require('fs');
 const express = require('express');
 const uuid = require('uuid/v1');
 
@@ -13,6 +14,12 @@ function requestIdMiddleware(req, res, next) {
 }
 
 app.use(requestIdMiddleware);
+
+app.get('/algorithmstoliveby', (_, res) => {
+  fs.readFile('./algorithmstoliveby.txt', 'utf8', (err, text) => {
+    res.send(text);
+  });
+});
 
 app.get('*', (_, res) => {
   res.send(res.locals.id);
