@@ -1,6 +1,7 @@
 require('dotenv').config();
 const fs = require('fs');
 const express = require('express');
+const { pick } = require('lodash');
 const uuid = require('uuid/v1');
 
 const app = express();
@@ -21,8 +22,29 @@ app.get('/algorithmstoliveby', (_, res) => {
   });
 });
 
-app.get('*', (_, res) => {
-  res.send(res.locals.id);
+app.get('*', (req, res) => {
+  res.set('Content-Type', 'application/json');
+  res.send({
+    req: pick(req, [
+      'baseUrl',
+      'body',
+      'cookies',
+      'headers',
+      'hostname',
+      'path',
+      'protocol',
+      'query',
+      'readable',
+      'route',
+      'secure',
+      // 'signedCookies',
+      'stale',
+      'subdomains',
+      'url',
+      'xhr',
+    ]),
+    res: { locals: res.locals },
+  });
 });
 
 app.listen(port, () => {
