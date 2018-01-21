@@ -16,7 +16,7 @@ function requestIdMiddleware(req, res, next) {
 app.use(requestIdMiddleware);
 
 app.get('/algorithmstoliveby', (_, res) => {
-  fs.readFile('./algorithmstoliveby.txt', 'utf8', (err, text) => {
+  fs.readFile('./algorithmstoliveby.html', 'utf8', (err, text) => {
     res.send(text);
   });
 });
