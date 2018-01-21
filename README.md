@@ -21,3 +21,9 @@ yarn pm2 logs # see logs
 yarn pm2 monit # monitor CPU & Memory usage
 yarn pm2 delete ecosystem.config.js # shutdown when change the config
 ```
+
+[Experimental] Use nodejs-dashboard
+```shell
+yarn stop # make sure to stop PM2
+yarn dashboard
+```
