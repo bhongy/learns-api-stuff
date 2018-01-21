@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      script: './index.js',
-      watch: true,
+      script: 'index.js',
+      watch: ['index.js'],
     },
   ],
 };
